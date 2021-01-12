@@ -1,6 +1,6 @@
 package generate;
 
-import com.zb.VboxData.TVboxMonitorGroup;
+import com.zb.VboxData.DTO.TVboxMonitorGroup;
 
 public interface TVboxMonitorGroupDao {
     int deleteByPrimaryKey(Long id);

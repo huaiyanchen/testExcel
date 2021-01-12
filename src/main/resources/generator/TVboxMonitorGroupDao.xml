@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="generate.TVboxMonitorGroupDao">
-  <resultMap id="BaseResultMap" type="com.zb.VboxData.TVboxMonitorGroup">
+  <resultMap id="BaseResultMap" type="com.zb.VboxData.DTO.TVboxMonitorGroup">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="gateway_id" jdbcType="BIGINT" property="gatewayId" />
     <result column="group_id" jdbcType="BIGINT" property="groupId" />
@@ -35,7 +35,7 @@
     delete from t_vbox_monitor_group
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.zb.VboxData.TVboxMonitorGroup" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.zb.VboxData.DTO.TVboxMonitorGroup" useGeneratedKeys="true">
     insert into t_vbox_monitor_group (gateway_id, group_id, group_name, 
       trigger_type, config_id, his_cycle, 
       plc_id, addr_type, addr_stat_no, 
@@ -49,7 +49,7 @@
       #{createBy,jdbcType=BIGINT}, #{createDt,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=BIGINT}, 
       #{updateDt,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.zb.VboxData.TVboxMonitorGroup" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.zb.VboxData.DTO.TVboxMonitorGroup" useGeneratedKeys="true">
     insert into t_vbox_monitor_group
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="gatewayId != null">
@@ -152,7 +152,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.zb.VboxData.TVboxMonitorGroup">
+  <update id="updateByPrimaryKeySelective" parameterType="com.zb.VboxData.DTO.TVboxMonitorGroup">
     update t_vbox_monitor_group
     <set>
       <if test="gatewayId != null">
@@ -206,7 +206,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.zb.VboxData.TVboxMonitorGroup">
+  <update id="updateByPrimaryKey" parameterType="com.zb.VboxData.DTO.TVboxMonitorGroup">
     update t_vbox_monitor_group
     set gateway_id = #{gatewayId,jdbcType=BIGINT},
       group_id = #{groupId,jdbcType=BIGINT},

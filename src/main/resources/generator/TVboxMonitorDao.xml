@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="generate.TVboxMonitorDao">
-  <resultMap id="BaseResultMap" type="com.zb.VboxData.TVboxMonitor">
+  <resultMap id="BaseResultMap" type="com.zb.VboxData.DTO.TVboxMonitor">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="plc_id" jdbcType="BIGINT" property="plcId" />
     <result column="device_id" jdbcType="VARCHAR" property="deviceId" />
@@ -58,7 +58,7 @@
     delete from t_vbox_monitor
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.zb.VboxData.TVboxMonitor" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.zb.VboxData.DTO.TVboxMonitor" useGeneratedKeys="true">
     insert into t_vbox_monitor (plc_id, device_id, group_id, 
       collect_id, collect_name, config_id, 
       addr_type, rid, field_name, 
@@ -86,7 +86,7 @@
       #{createDt,jdbcType=TIMESTAMP}, #{createBy,jdbcType=BIGINT}, #{updateDt,jdbcType=TIMESTAMP}, 
       #{updateBy,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.zb.VboxData.TVboxMonitor" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.zb.VboxData.DTO.TVboxMonitor" useGeneratedKeys="true">
     insert into t_vbox_monitor
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="plcId != null">
@@ -315,7 +315,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.zb.VboxData.TVboxMonitor">
+  <update id="updateByPrimaryKeySelective" parameterType="com.zb.VboxData.DTO.TVboxMonitor">
     update t_vbox_monitor
     <set>
       <if test="plcId != null">
@@ -432,7 +432,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.zb.VboxData.TVboxMonitor">
+  <update id="updateByPrimaryKey" parameterType="com.zb.VboxData.DTO.TVboxMonitor">
     update t_vbox_monitor
     set plc_id = #{plcId,jdbcType=BIGINT},
       device_id = #{deviceId,jdbcType=VARCHAR},

@@ -1,4 +1,4 @@
-package com.zb.VboxData;
+package com.zb.VboxData.DTO;
 
 import java.io.Serializable;
 import java.util.Date;

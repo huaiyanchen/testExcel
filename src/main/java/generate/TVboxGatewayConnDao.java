@@ -1,6 +1,6 @@
 package generate;
 
-import com.zb.VboxData.TVboxGatewayConn;
+import com.zb.VboxData.DTO.TVboxGatewayConn;
 
 public interface TVboxGatewayConnDao {
     int deleteByPrimaryKey(Long id);
