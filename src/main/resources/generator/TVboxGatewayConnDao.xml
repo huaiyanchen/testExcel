@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="generate.TVboxGatewayConnDao">
+  <resultMap id="BaseResultMap" type="com.zb.VboxData.TVboxGatewayConn">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="gateway_id" jdbcType="BIGINT" property="gatewayId" />
+    <result column="plc_id" jdbcType="BIGINT" property="plcId" />
+    <result column="plc_stat_no" jdbcType="BIGINT" property="plcStatNo" />
+    <result column="port" jdbcType="VARCHAR" property="port" />
+    <result column="comtype" jdbcType="VARCHAR" property="comtype" />
+    <result column="box_stat_no" jdbcType="INTEGER" property="boxStatNo" />
+    <result column="dev_type" jdbcType="VARCHAR" property="devType" />
+    <result column="dev_model" jdbcType="VARCHAR" property="devModel" />
+    <result column="driver" jdbcType="VARCHAR" property="driver" />
+    <result column="wait_timeout" jdbcType="INTEGER" property="waitTimeout" />
+    <result column="retry_timeout" jdbcType="INTEGER" property="retryTimeout" />
+    <result column="connection_mode" jdbcType="VARCHAR" property="connectionMode" />
+    <result column="data_length" jdbcType="INTEGER" property="dataLength" />
+    <result column="gateway_station_number" jdbcType="INTEGER" property="gatewayStationNumber" />
+    <result column="do_type" jdbcType="VARCHAR" property="doType" />
+    <result column="retry_times" jdbcType="INTEGER" property="retryTimes" />
+    <result column="rev_timeout" jdbcType="INTEGER" property="revTimeout" />
+    <result column="delay_time" jdbcType="INTEGER" property="delayTime" />
+    <result column="baudrate" jdbcType="INTEGER" property="baudrate" />
+    <result column="stop_bit" jdbcType="VARCHAR" property="stopBit" />
+    <result column="check_bit" jdbcType="VARCHAR" property="checkBit" />
+    <result column="net_port" jdbcType="VARCHAR" property="netPort" />
+    <result column="net_type" jdbcType="VARCHAR" property="netType" />
+    <result column="net_isbroadcast" jdbcType="VARCHAR" property="netIsbroadcast" />
+    <result column="net_broadcastaddr" jdbcType="VARCHAR" property="netBroadcastaddr" />
+    <result column="net_ipaddr" jdbcType="VARCHAR" property="netIpaddr" />
+    <result column="free_tag" jdbcType="VARCHAR" property="freeTag" />
+    <result column="create_by" jdbcType="BIGINT" property="createBy" />
+    <result column="create_dt" jdbcType="TIMESTAMP" property="createDt" />
+    <result column="update_by" jdbcType="BIGINT" property="updateBy" />
+    <result column="update_dt" jdbcType="TIMESTAMP" property="updateDt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, gateway_id, plc_id, plc_stat_no, port, comtype, box_stat_no, dev_type, dev_model, 
+    driver, wait_timeout, retry_timeout, connection_mode, data_length, gateway_station_number, 
+    do_type, retry_times, rev_timeout, delay_time, baudrate, stop_bit, check_bit, net_port, 
+    net_type, net_isbroadcast, net_broadcastaddr, net_ipaddr, free_tag, create_by, create_dt, 
+    update_by, update_dt
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_vbox_gateway_conn
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_vbox_gateway_conn
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.zb.VboxData.TVboxGatewayConn" useGeneratedKeys="true">
+    insert into t_vbox_gateway_conn (gateway_id, plc_id, plc_stat_no, 
+      port, comtype, box_stat_no, 
+      dev_type, dev_model, driver, 
+      wait_timeout, retry_timeout, connection_mode, 
+      data_length, gateway_station_number, do_type, 
+      retry_times, rev_timeout, delay_time, 
+      baudrate, stop_bit, check_bit, 
+      net_port, net_type, net_isbroadcast, 
+      net_broadcastaddr, net_ipaddr, free_tag, 
+      create_by, create_dt, update_by, 
+      update_dt)
+    values (#{gatewayId,jdbcType=BIGINT}, #{plcId,jdbcType=BIGINT}, #{plcStatNo,jdbcType=BIGINT}, 
+      #{port,jdbcType=VARCHAR}, #{comtype,jdbcType=VARCHAR}, #{boxStatNo,jdbcType=INTEGER}, 
+      #{devType,jdbcType=VARCHAR}, #{devModel,jdbcType=VARCHAR}, #{driver,jdbcType=VARCHAR}, 
+      #{waitTimeout,jdbcType=INTEGER}, #{retryTimeout,jdbcType=INTEGER}, #{connectionMode,jdbcType=VARCHAR}, 
+      #{dataLength,jdbcType=INTEGER}, #{gatewayStationNumber,jdbcType=INTEGER}, #{doType,jdbcType=VARCHAR}, 
+      #{retryTimes,jdbcType=INTEGER}, #{revTimeout,jdbcType=INTEGER}, #{delayTime,jdbcType=INTEGER}, 
+      #{baudrate,jdbcType=INTEGER}, #{stopBit,jdbcType=VARCHAR}, #{checkBit,jdbcType=VARCHAR}, 
+      #{netPort,jdbcType=VARCHAR}, #{netType,jdbcType=VARCHAR}, #{netIsbroadcast,jdbcType=VARCHAR}, 
+      #{netBroadcastaddr,jdbcType=VARCHAR}, #{netIpaddr,jdbcType=VARCHAR}, #{freeTag,jdbcType=VARCHAR}, 
+      #{createBy,jdbcType=BIGINT}, #{createDt,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=BIGINT}, 
+      #{updateDt,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.zb.VboxData.TVboxGatewayConn" useGeneratedKeys="true">
+    insert into t_vbox_gateway_conn
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="gatewayId != null">
+        gateway_id,
+      </if>
+      <if test="plcId != null">
+        plc_id,
+      </if>
+      <if test="plcStatNo != null">
+        plc_stat_no,
+      </if>
+      <if test="port != null">
+        port,
+      </if>
+      <if test="comtype != null">
+        comtype,
+      </if>
+      <if test="boxStatNo != null">
+        box_stat_no,
+      </if>
+      <if test="devType != null">
+        dev_type,
+      </if>
+      <if test="devModel != null">
+        dev_model,
+      </if>
+      <if test="driver != null">
+        driver,
+      </if>
+      <if test="waitTimeout != null">
+        wait_timeout,
+      </if>
+      <if test="retryTimeout != null">
+        retry_timeout,
+      </if>
+      <if test="connectionMode != null">
+        connection_mode,
+      </if>
+      <if test="dataLength != null">
+        data_length,
+      </if>
+      <if test="gatewayStationNumber != null">
+        gateway_station_number,
+      </if>
+      <if test="doType != null">
+        do_type,
+      </if>
+      <if test="retryTimes != null">
+        retry_times,
+      </if>
+      <if test="revTimeout != null">
+        rev_timeout,
+      </if>
+      <if test="delayTime != null">
+        delay_time,
+      </if>
+      <if test="baudrate != null">
+        baudrate,
+      </if>
+      <if test="stopBit != null">
+        stop_bit,
+      </if>
+      <if test="checkBit != null">
+        check_bit,
+      </if>
+      <if test="netPort != null">
+        net_port,
+      </if>
+      <if test="netType != null">
+        net_type,
+      </if>
+      <if test="netIsbroadcast != null">
+        net_isbroadcast,
+      </if>
+      <if test="netBroadcastaddr != null">
+        net_broadcastaddr,
+      </if>
+      <if test="netIpaddr != null">
+        net_ipaddr,
+      </if>
+      <if test="freeTag != null">
+        free_tag,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="createDt != null">
+        create_dt,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+      <if test="updateDt != null">
+        update_dt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="gatewayId != null">
+        #{gatewayId,jdbcType=BIGINT},
+      </if>
+      <if test="plcId != null">
+        #{plcId,jdbcType=BIGINT},
+      </if>
+      <if test="plcStatNo != null">
+        #{plcStatNo,jdbcType=BIGINT},
+      </if>
+      <if test="port != null">
+        #{port,jdbcType=VARCHAR},
+      </if>
+      <if test="comtype != null">
+        #{comtype,jdbcType=VARCHAR},
+      </if>
+      <if test="boxStatNo != null">
+        #{boxStatNo,jdbcType=INTEGER},
+      </if>
+      <if test="devType != null">
+        #{devType,jdbcType=VARCHAR},
+      </if>
+      <if test="devModel != null">
+        #{devModel,jdbcType=VARCHAR},
+      </if>
+      <if test="driver != null">
+        #{driver,jdbcType=VARCHAR},
+      </if>
+      <if test="waitTimeout != null">
+        #{waitTimeout,jdbcType=INTEGER},
+      </if>
+      <if test="retryTimeout != null">
+        #{retryTimeout,jdbcType=INTEGER},
+      </if>
+      <if test="connectionMode != null">
+        #{connectionMode,jdbcType=VARCHAR},
+      </if>
+      <if test="dataLength != null">
+        #{dataLength,jdbcType=INTEGER},
+      </if>
+      <if test="gatewayStationNumber != null">
+        #{gatewayStationNumber,jdbcType=INTEGER},
+      </if>
+      <if test="doType != null">
+        #{doType,jdbcType=VARCHAR},
+      </if>
+      <if test="retryTimes != null">
+        #{retryTimes,jdbcType=INTEGER},
+      </if>
+      <if test="revTimeout != null">
+        #{revTimeout,jdbcType=INTEGER},
+      </if>
+      <if test="delayTime != null">
+        #{delayTime,jdbcType=INTEGER},
+      </if>
+      <if test="baudrate != null">
+        #{baudrate,jdbcType=INTEGER},
+      </if>
+      <if test="stopBit != null">
+        #{stopBit,jdbcType=VARCHAR},
+      </if>
+      <if test="checkBit != null">
+        #{checkBit,jdbcType=VARCHAR},
+      </if>
+      <if test="netPort != null">
+        #{netPort,jdbcType=VARCHAR},
+      </if>
+      <if test="netType != null">
+        #{netType,jdbcType=VARCHAR},
+      </if>
+      <if test="netIsbroadcast != null">
+        #{netIsbroadcast,jdbcType=VARCHAR},
+      </if>
+      <if test="netBroadcastaddr != null">
+        #{netBroadcastaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="netIpaddr != null">
+        #{netIpaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="freeTag != null">
+        #{freeTag,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=BIGINT},
+      </if>
+      <if test="createDt != null">
+        #{createDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=BIGINT},
+      </if>
+      <if test="updateDt != null">
+        #{updateDt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zb.VboxData.TVboxGatewayConn">
+    update t_vbox_gateway_conn
+    <set>
+      <if test="gatewayId != null">
+        gateway_id = #{gatewayId,jdbcType=BIGINT},
+      </if>
+      <if test="plcId != null">
+        plc_id = #{plcId,jdbcType=BIGINT},
+      </if>
+      <if test="plcStatNo != null">
+        plc_stat_no = #{plcStatNo,jdbcType=BIGINT},
+      </if>
+      <if test="port != null">
+        port = #{port,jdbcType=VARCHAR},
+      </if>
+      <if test="comtype != null">
+        comtype = #{comtype,jdbcType=VARCHAR},
+      </if>
+      <if test="boxStatNo != null">
+        box_stat_no = #{boxStatNo,jdbcType=INTEGER},
+      </if>
+      <if test="devType != null">
+        dev_type = #{devType,jdbcType=VARCHAR},
+      </if>
+      <if test="devModel != null">
+        dev_model = #{devModel,jdbcType=VARCHAR},
+      </if>
+      <if test="driver != null">
+        driver = #{driver,jdbcType=VARCHAR},
+      </if>
+      <if test="waitTimeout != null">
+        wait_timeout = #{waitTimeout,jdbcType=INTEGER},
+      </if>
+      <if test="retryTimeout != null">
+        retry_timeout = #{retryTimeout,jdbcType=INTEGER},
+      </if>
+      <if test="connectionMode != null">
+        connection_mode = #{connectionMode,jdbcType=VARCHAR},
+      </if>
+      <if test="dataLength != null">
+        data_length = #{dataLength,jdbcType=INTEGER},
+      </if>
+      <if test="gatewayStationNumber != null">
+        gateway_station_number = #{gatewayStationNumber,jdbcType=INTEGER},
+      </if>
+      <if test="doType != null">
+        do_type = #{doType,jdbcType=VARCHAR},
+      </if>
+      <if test="retryTimes != null">
+        retry_times = #{retryTimes,jdbcType=INTEGER},
+      </if>
+      <if test="revTimeout != null">
+        rev_timeout = #{revTimeout,jdbcType=INTEGER},
+      </if>
+      <if test="delayTime != null">
+        delay_time = #{delayTime,jdbcType=INTEGER},
+      </if>
+      <if test="baudrate != null">
+        baudrate = #{baudrate,jdbcType=INTEGER},
+      </if>
+      <if test="stopBit != null">
+        stop_bit = #{stopBit,jdbcType=VARCHAR},
+      </if>
+      <if test="checkBit != null">
+        check_bit = #{checkBit,jdbcType=VARCHAR},
+      </if>
+      <if test="netPort != null">
+        net_port = #{netPort,jdbcType=VARCHAR},
+      </if>
+      <if test="netType != null">
+        net_type = #{netType,jdbcType=VARCHAR},
+      </if>
+      <if test="netIsbroadcast != null">
+        net_isbroadcast = #{netIsbroadcast,jdbcType=VARCHAR},
+      </if>
+      <if test="netBroadcastaddr != null">
+        net_broadcastaddr = #{netBroadcastaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="netIpaddr != null">
+        net_ipaddr = #{netIpaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="freeTag != null">
+        free_tag = #{freeTag,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=BIGINT},
+      </if>
+      <if test="createDt != null">
+        create_dt = #{createDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=BIGINT},
+      </if>
+      <if test="updateDt != null">
+        update_dt = #{updateDt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zb.VboxData.TVboxGatewayConn">
+    update t_vbox_gateway_conn
+    set gateway_id = #{gatewayId,jdbcType=BIGINT},
+      plc_id = #{plcId,jdbcType=BIGINT},
+      plc_stat_no = #{plcStatNo,jdbcType=BIGINT},
+      port = #{port,jdbcType=VARCHAR},
+      comtype = #{comtype,jdbcType=VARCHAR},
+      box_stat_no = #{boxStatNo,jdbcType=INTEGER},
+      dev_type = #{devType,jdbcType=VARCHAR},
+      dev_model = #{devModel,jdbcType=VARCHAR},
+      driver = #{driver,jdbcType=VARCHAR},
+      wait_timeout = #{waitTimeout,jdbcType=INTEGER},
+      retry_timeout = #{retryTimeout,jdbcType=INTEGER},
+      connection_mode = #{connectionMode,jdbcType=VARCHAR},
+      data_length = #{dataLength,jdbcType=INTEGER},
+      gateway_station_number = #{gatewayStationNumber,jdbcType=INTEGER},
+      do_type = #{doType,jdbcType=VARCHAR},
+      retry_times = #{retryTimes,jdbcType=INTEGER},
+      rev_timeout = #{revTimeout,jdbcType=INTEGER},
+      delay_time = #{delayTime,jdbcType=INTEGER},
+      baudrate = #{baudrate,jdbcType=INTEGER},
+      stop_bit = #{stopBit,jdbcType=VARCHAR},
+      check_bit = #{checkBit,jdbcType=VARCHAR},
+      net_port = #{netPort,jdbcType=VARCHAR},
+      net_type = #{netType,jdbcType=VARCHAR},
+      net_isbroadcast = #{netIsbroadcast,jdbcType=VARCHAR},
+      net_broadcastaddr = #{netBroadcastaddr,jdbcType=VARCHAR},
+      net_ipaddr = #{netIpaddr,jdbcType=VARCHAR},
+      free_tag = #{freeTag,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=BIGINT},
+      create_dt = #{createDt,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=BIGINT},
+      update_dt = #{updateDt,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

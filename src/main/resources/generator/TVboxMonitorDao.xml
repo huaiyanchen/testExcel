@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="generate.TVboxMonitorDao">
+  <resultMap id="BaseResultMap" type="com.zb.VboxData.TVboxMonitor">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="plc_id" jdbcType="BIGINT" property="plcId" />
+    <result column="device_id" jdbcType="VARCHAR" property="deviceId" />
+    <result column="group_id" jdbcType="BIGINT" property="groupId" />
+    <result column="collect_id" jdbcType="BIGINT" property="collectId" />
+    <result column="collect_name" jdbcType="VARCHAR" property="collectName" />
+    <result column="config_id" jdbcType="VARCHAR" property="configId" />
+    <result column="addr_type" jdbcType="VARCHAR" property="addrType" />
+    <result column="rid" jdbcType="VARCHAR" property="rid" />
+    <result column="field_name" jdbcType="VARCHAR" property="fieldName" />
+    <result column="addr" jdbcType="INTEGER" property="addr" />
+    <result column="cfg_role" jdbcType="VARCHAR" property="cfgRole" />
+    <result column="addr_stat_no" jdbcType="INTEGER" property="addrStatNo" />
+    <result column="describe" jdbcType="VARCHAR" property="describe" />
+    <result column="ext_unit" jdbcType="VARCHAR" property="extUnit" />
+    <result column="digit_binary" jdbcType="VARCHAR" property="digitBinary" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="digit_count" jdbcType="VARCHAR" property="digitCount" />
+    <result column="digit_limit" jdbcType="VARCHAR" property="digitLimit" />
+    <result column="data_limit" jdbcType="VARCHAR" property="dataLimit" />
+    <result column="dev_model" jdbcType="VARCHAR" property="devModel" />
+    <result column="dead_set" jdbcType="INTEGER" property="deadSet" />
+    <result column="data_id" jdbcType="VARCHAR" property="dataId" />
+    <result column="batch" jdbcType="VARCHAR" property="batch" />
+    <result column="increase" jdbcType="VARCHAR" property="increase" />
+    <result column="free_id" jdbcType="VARCHAR" property="freeId" />
+    <result column="isfree" jdbcType="VARCHAR" property="isfree" />
+    <result column="parent" jdbcType="VARCHAR" property="parent" />
+    <result column="string_point" jdbcType="VARCHAR" property="stringPoint" />
+    <result column="modbus_unicod" jdbcType="VARCHAR" property="modbusUnicod" />
+    <result column="float_point" jdbcType="VARCHAR" property="floatPoint" />
+    <result column="parent_value" jdbcType="VARCHAR" property="parentValue" />
+    <result column="handle_script" jdbcType="VARCHAR" property="handleScript" />
+    <result column="custom_config" jdbcType="VARCHAR" property="customConfig" />
+    <result column="create_dt" jdbcType="TIMESTAMP" property="createDt" />
+    <result column="create_by" jdbcType="BIGINT" property="createBy" />
+    <result column="update_dt" jdbcType="TIMESTAMP" property="updateDt" />
+    <result column="update_by" jdbcType="BIGINT" property="updateBy" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, plc_id, device_id, group_id, collect_id, collect_name, config_id, addr_type, 
+    rid, field_name, addr, cfg_role, addr_stat_no, `describe`, ext_unit, digit_binary, 
+    `state`, digit_count, digit_limit, data_limit, dev_model, dead_set, data_id, batch, 
+    increase, free_id, isfree, parent, string_point, modbus_unicod, float_point, parent_value, 
+    handle_script, custom_config, create_dt, create_by, update_dt, update_by
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_vbox_monitor
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_vbox_monitor
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.zb.VboxData.TVboxMonitor" useGeneratedKeys="true">
+    insert into t_vbox_monitor (plc_id, device_id, group_id, 
+      collect_id, collect_name, config_id, 
+      addr_type, rid, field_name, 
+      addr, cfg_role, addr_stat_no, 
+      `describe`, ext_unit, digit_binary, 
+      `state`, digit_count, digit_limit, 
+      data_limit, dev_model, dead_set, 
+      data_id, batch, increase, 
+      free_id, isfree, parent, 
+      string_point, modbus_unicod, float_point, 
+      parent_value, handle_script, custom_config, 
+      create_dt, create_by, update_dt, 
+      update_by)
+    values (#{plcId,jdbcType=BIGINT}, #{deviceId,jdbcType=VARCHAR}, #{groupId,jdbcType=BIGINT}, 
+      #{collectId,jdbcType=BIGINT}, #{collectName,jdbcType=VARCHAR}, #{configId,jdbcType=VARCHAR}, 
+      #{addrType,jdbcType=VARCHAR}, #{rid,jdbcType=VARCHAR}, #{fieldName,jdbcType=VARCHAR}, 
+      #{addr,jdbcType=INTEGER}, #{cfgRole,jdbcType=VARCHAR}, #{addrStatNo,jdbcType=INTEGER}, 
+      #{describe,jdbcType=VARCHAR}, #{extUnit,jdbcType=VARCHAR}, #{digitBinary,jdbcType=VARCHAR}, 
+      #{state,jdbcType=INTEGER}, #{digitCount,jdbcType=VARCHAR}, #{digitLimit,jdbcType=VARCHAR}, 
+      #{dataLimit,jdbcType=VARCHAR}, #{devModel,jdbcType=VARCHAR}, #{deadSet,jdbcType=INTEGER}, 
+      #{dataId,jdbcType=VARCHAR}, #{batch,jdbcType=VARCHAR}, #{increase,jdbcType=VARCHAR}, 
+      #{freeId,jdbcType=VARCHAR}, #{isfree,jdbcType=VARCHAR}, #{parent,jdbcType=VARCHAR}, 
+      #{stringPoint,jdbcType=VARCHAR}, #{modbusUnicod,jdbcType=VARCHAR}, #{floatPoint,jdbcType=VARCHAR}, 
+      #{parentValue,jdbcType=VARCHAR}, #{handleScript,jdbcType=VARCHAR}, #{customConfig,jdbcType=VARCHAR}, 
+      #{createDt,jdbcType=TIMESTAMP}, #{createBy,jdbcType=BIGINT}, #{updateDt,jdbcType=TIMESTAMP}, 
+      #{updateBy,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.zb.VboxData.TVboxMonitor" useGeneratedKeys="true">
+    insert into t_vbox_monitor
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="plcId != null">
+        plc_id,
+      </if>
+      <if test="deviceId != null">
+        device_id,
+      </if>
+      <if test="groupId != null">
+        group_id,
+      </if>
+      <if test="collectId != null">
+        collect_id,
+      </if>
+      <if test="collectName != null">
+        collect_name,
+      </if>
+      <if test="configId != null">
+        config_id,
+      </if>
+      <if test="addrType != null">
+        addr_type,
+      </if>
+      <if test="rid != null">
+        rid,
+      </if>
+      <if test="fieldName != null">
+        field_name,
+      </if>
+      <if test="addr != null">
+        addr,
+      </if>
+      <if test="cfgRole != null">
+        cfg_role,
+      </if>
+      <if test="addrStatNo != null">
+        addr_stat_no,
+      </if>
+      <if test="describe != null">
+        `describe`,
+      </if>
+      <if test="extUnit != null">
+        ext_unit,
+      </if>
+      <if test="digitBinary != null">
+        digit_binary,
+      </if>
+      <if test="state != null">
+        `state`,
+      </if>
+      <if test="digitCount != null">
+        digit_count,
+      </if>
+      <if test="digitLimit != null">
+        digit_limit,
+      </if>
+      <if test="dataLimit != null">
+        data_limit,
+      </if>
+      <if test="devModel != null">
+        dev_model,
+      </if>
+      <if test="deadSet != null">
+        dead_set,
+      </if>
+      <if test="dataId != null">
+        data_id,
+      </if>
+      <if test="batch != null">
+        batch,
+      </if>
+      <if test="increase != null">
+        increase,
+      </if>
+      <if test="freeId != null">
+        free_id,
+      </if>
+      <if test="isfree != null">
+        isfree,
+      </if>
+      <if test="parent != null">
+        parent,
+      </if>
+      <if test="stringPoint != null">
+        string_point,
+      </if>
+      <if test="modbusUnicod != null">
+        modbus_unicod,
+      </if>
+      <if test="floatPoint != null">
+        float_point,
+      </if>
+      <if test="parentValue != null">
+        parent_value,
+      </if>
+      <if test="handleScript != null">
+        handle_script,
+      </if>
+      <if test="customConfig != null">
+        custom_config,
+      </if>
+      <if test="createDt != null">
+        create_dt,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="updateDt != null">
+        update_dt,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="plcId != null">
+        #{plcId,jdbcType=BIGINT},
+      </if>
+      <if test="deviceId != null">
+        #{deviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="groupId != null">
+        #{groupId,jdbcType=BIGINT},
+      </if>
+      <if test="collectId != null">
+        #{collectId,jdbcType=BIGINT},
+      </if>
+      <if test="collectName != null">
+        #{collectName,jdbcType=VARCHAR},
+      </if>
+      <if test="configId != null">
+        #{configId,jdbcType=VARCHAR},
+      </if>
+      <if test="addrType != null">
+        #{addrType,jdbcType=VARCHAR},
+      </if>
+      <if test="rid != null">
+        #{rid,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldName != null">
+        #{fieldName,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null">
+        #{addr,jdbcType=INTEGER},
+      </if>
+      <if test="cfgRole != null">
+        #{cfgRole,jdbcType=VARCHAR},
+      </if>
+      <if test="addrStatNo != null">
+        #{addrStatNo,jdbcType=INTEGER},
+      </if>
+      <if test="describe != null">
+        #{describe,jdbcType=VARCHAR},
+      </if>
+      <if test="extUnit != null">
+        #{extUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="digitBinary != null">
+        #{digitBinary,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="digitCount != null">
+        #{digitCount,jdbcType=VARCHAR},
+      </if>
+      <if test="digitLimit != null">
+        #{digitLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="dataLimit != null">
+        #{dataLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="devModel != null">
+        #{devModel,jdbcType=VARCHAR},
+      </if>
+      <if test="deadSet != null">
+        #{deadSet,jdbcType=INTEGER},
+      </if>
+      <if test="dataId != null">
+        #{dataId,jdbcType=VARCHAR},
+      </if>
+      <if test="batch != null">
+        #{batch,jdbcType=VARCHAR},
+      </if>
+      <if test="increase != null">
+        #{increase,jdbcType=VARCHAR},
+      </if>
+      <if test="freeId != null">
+        #{freeId,jdbcType=VARCHAR},
+      </if>
+      <if test="isfree != null">
+        #{isfree,jdbcType=VARCHAR},
+      </if>
+      <if test="parent != null">
+        #{parent,jdbcType=VARCHAR},
+      </if>
+      <if test="stringPoint != null">
+        #{stringPoint,jdbcType=VARCHAR},
+      </if>
+      <if test="modbusUnicod != null">
+        #{modbusUnicod,jdbcType=VARCHAR},
+      </if>
+      <if test="floatPoint != null">
+        #{floatPoint,jdbcType=VARCHAR},
+      </if>
+      <if test="parentValue != null">
+        #{parentValue,jdbcType=VARCHAR},
+      </if>
+      <if test="handleScript != null">
+        #{handleScript,jdbcType=VARCHAR},
+      </if>
+      <if test="customConfig != null">
+        #{customConfig,jdbcType=VARCHAR},
+      </if>
+      <if test="createDt != null">
+        #{createDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=BIGINT},
+      </if>
+      <if test="updateDt != null">
+        #{updateDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zb.VboxData.TVboxMonitor">
+    update t_vbox_monitor
+    <set>
+      <if test="plcId != null">
+        plc_id = #{plcId,jdbcType=BIGINT},
+      </if>
+      <if test="deviceId != null">
+        device_id = #{deviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="groupId != null">
+        group_id = #{groupId,jdbcType=BIGINT},
+      </if>
+      <if test="collectId != null">
+        collect_id = #{collectId,jdbcType=BIGINT},
+      </if>
+      <if test="collectName != null">
+        collect_name = #{collectName,jdbcType=VARCHAR},
+      </if>
+      <if test="configId != null">
+        config_id = #{configId,jdbcType=VARCHAR},
+      </if>
+      <if test="addrType != null">
+        addr_type = #{addrType,jdbcType=VARCHAR},
+      </if>
+      <if test="rid != null">
+        rid = #{rid,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldName != null">
+        field_name = #{fieldName,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null">
+        addr = #{addr,jdbcType=INTEGER},
+      </if>
+      <if test="cfgRole != null">
+        cfg_role = #{cfgRole,jdbcType=VARCHAR},
+      </if>
+      <if test="addrStatNo != null">
+        addr_stat_no = #{addrStatNo,jdbcType=INTEGER},
+      </if>
+      <if test="describe != null">
+        `describe` = #{describe,jdbcType=VARCHAR},
+      </if>
+      <if test="extUnit != null">
+        ext_unit = #{extUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="digitBinary != null">
+        digit_binary = #{digitBinary,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        `state` = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="digitCount != null">
+        digit_count = #{digitCount,jdbcType=VARCHAR},
+      </if>
+      <if test="digitLimit != null">
+        digit_limit = #{digitLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="dataLimit != null">
+        data_limit = #{dataLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="devModel != null">
+        dev_model = #{devModel,jdbcType=VARCHAR},
+      </if>
+      <if test="deadSet != null">
+        dead_set = #{deadSet,jdbcType=INTEGER},
+      </if>
+      <if test="dataId != null">
+        data_id = #{dataId,jdbcType=VARCHAR},
+      </if>
+      <if test="batch != null">
+        batch = #{batch,jdbcType=VARCHAR},
+      </if>
+      <if test="increase != null">
+        increase = #{increase,jdbcType=VARCHAR},
+      </if>
+      <if test="freeId != null">
+        free_id = #{freeId,jdbcType=VARCHAR},
+      </if>
+      <if test="isfree != null">
+        isfree = #{isfree,jdbcType=VARCHAR},
+      </if>
+      <if test="parent != null">
+        parent = #{parent,jdbcType=VARCHAR},
+      </if>
+      <if test="stringPoint != null">
+        string_point = #{stringPoint,jdbcType=VARCHAR},
+      </if>
+      <if test="modbusUnicod != null">
+        modbus_unicod = #{modbusUnicod,jdbcType=VARCHAR},
+      </if>
+      <if test="floatPoint != null">
+        float_point = #{floatPoint,jdbcType=VARCHAR},
+      </if>
+      <if test="parentValue != null">
+        parent_value = #{parentValue,jdbcType=VARCHAR},
+      </if>
+      <if test="handleScript != null">
+        handle_script = #{handleScript,jdbcType=VARCHAR},
+      </if>
+      <if test="customConfig != null">
+        custom_config = #{customConfig,jdbcType=VARCHAR},
+      </if>
+      <if test="createDt != null">
+        create_dt = #{createDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=BIGINT},
+      </if>
+      <if test="updateDt != null">
+        update_dt = #{updateDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zb.VboxData.TVboxMonitor">
+    update t_vbox_monitor
+    set plc_id = #{plcId,jdbcType=BIGINT},
+      device_id = #{deviceId,jdbcType=VARCHAR},
+      group_id = #{groupId,jdbcType=BIGINT},
+      collect_id = #{collectId,jdbcType=BIGINT},
+      collect_name = #{collectName,jdbcType=VARCHAR},
+      config_id = #{configId,jdbcType=VARCHAR},
+      addr_type = #{addrType,jdbcType=VARCHAR},
+      rid = #{rid,jdbcType=VARCHAR},
+      field_name = #{fieldName,jdbcType=VARCHAR},
+      addr = #{addr,jdbcType=INTEGER},
+      cfg_role = #{cfgRole,jdbcType=VARCHAR},
+      addr_stat_no = #{addrStatNo,jdbcType=INTEGER},
+      `describe` = #{describe,jdbcType=VARCHAR},
+      ext_unit = #{extUnit,jdbcType=VARCHAR},
+      digit_binary = #{digitBinary,jdbcType=VARCHAR},
+      `state` = #{state,jdbcType=INTEGER},
+      digit_count = #{digitCount,jdbcType=VARCHAR},
+      digit_limit = #{digitLimit,jdbcType=VARCHAR},
+      data_limit = #{dataLimit,jdbcType=VARCHAR},
+      dev_model = #{devModel,jdbcType=VARCHAR},
+      dead_set = #{deadSet,jdbcType=INTEGER},
+      data_id = #{dataId,jdbcType=VARCHAR},
+      batch = #{batch,jdbcType=VARCHAR},
+      increase = #{increase,jdbcType=VARCHAR},
+      free_id = #{freeId,jdbcType=VARCHAR},
+      isfree = #{isfree,jdbcType=VARCHAR},
+      parent = #{parent,jdbcType=VARCHAR},
+      string_point = #{stringPoint,jdbcType=VARCHAR},
+      modbus_unicod = #{modbusUnicod,jdbcType=VARCHAR},
+      float_point = #{floatPoint,jdbcType=VARCHAR},
+      parent_value = #{parentValue,jdbcType=VARCHAR},
+      handle_script = #{handleScript,jdbcType=VARCHAR},
+      custom_config = #{customConfig,jdbcType=VARCHAR},
+      create_dt = #{createDt,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=BIGINT},
+      update_dt = #{updateDt,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

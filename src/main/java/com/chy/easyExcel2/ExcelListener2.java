@@ -22,11 +22,8 @@ public class ExcelListener2 extends AnalysisEventListener<Object> {
     public void invoke(Object data, AnalysisContext context) {
         LOGGER.info("解析到一条数据:{}", JSON.toJSONString(data));
         System.out.println(data);
-
-
-
+        //TODO
     }
-
     //读取完成之后
     @Override
     public void doAfterAllAnalysed(AnalysisContext analysisContext) {

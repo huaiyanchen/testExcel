@@ -3,21 +3,13 @@ package com.chy.easyExcel;
 import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 public class ExcelListener extends AnalysisEventListener<CommunicationPortDataDTO> {
     //一行一行读取excel内容
     @Override
     public void invoke(CommunicationPortDataDTO demoDataDTO, AnalysisContext analysisContext) {
-        //System.out.println("****" + demoDataDTO);
-        System.out.println(analysisContext);
-
-        List<CommunicationPortDataDTO> communicationPortDataDTOList = new ArrayList<>();
-        communicationPortDataDTOList.add(demoDataDTO);
-        System.out.println(communicationPortDataDTOList);
-
+        System.out.println("****" + demoDataDTO);
     }
     //读取表头内容
     @Override
